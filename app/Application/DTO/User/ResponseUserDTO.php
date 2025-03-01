@@ -2,12 +2,12 @@
 
 namespace App\Application\DTO\User;
 
-readonly class CreateUserDTO
+readonly class ResponseUserDTO
 {
     public function __construct(
+        public string $id,
         public string $name,
         public string $email,
-        public string $password,
     ){
     }
 }

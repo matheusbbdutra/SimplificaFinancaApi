@@ -4,10 +4,10 @@ namespace App\Infrastructure\Persistence\Eloquent\User\Model;
 
 use App\Infrastructure\Persistence\Eloquent\Finance\Model\AccountModel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class UserModel extends Authenticatable implements JWTSubject
+class UserModel extends User implements JWTSubject
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
