@@ -6,7 +6,7 @@ class Banner
 {
     private ?int $id = null;
 
-    public function __construct(private string $bandeira)
+    public function __construct(private string $name)
     {
     }
 
@@ -20,13 +20,13 @@ class Banner
         $this->id = $id;
     }
 
-    public function getBandeira(): string
+    public function getName(): string
     {
-        return $this->bandeira;
+        return $this->name;
     }
 
-    public function setBandeira(string $bandeira): void
+    public function setName(string $name): void
     {
-        $this->bandeira = $bandeira;
+        $this->name = $name;
     }
 }
