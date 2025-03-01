@@ -2,28 +2,30 @@
 
 namespace App\Domain\Finance\Entity;
 
+use App\Domain\User\Entity\User;
+
 class Card
 {
     private ?int $id = null;
 
     public function __construct(
-        private Account $account,
-        private string $name,
-        private int $limit,
+        private User   $user,
+        private string    $name,
+        private int       $limit,
         private \DateTime $dueDate,
-        private Banner $banner,
+        private Banner    $banner,
     )
     {
     }
 
-    public function getAccount(): Account
+    public function getAccount(): User
     {
-        return $this->account;
+        return $this->user;
     }
 
-    public function setAccount(Account $account): void
+    public function setAccount(User $user): void
     {
-        $this->account = $account;
+        $this->user = $user;
     }
 
     public function getName(): string

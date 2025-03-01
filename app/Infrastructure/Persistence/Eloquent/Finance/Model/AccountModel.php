@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Infrastructure\Persistence\Finance\Model;
+namespace App\Infrastructure\Persistence\Eloquent\Finance\Model;
 
+use App\Infrastructure\Persistence\Eloquent\User\Model\UserModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -10,17 +12,12 @@ class AccountModel extends Model
 {
     protected $table = 'accounts';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'user_id'];
     public $timestamps = true;
 
-    public function wallets(): BelongsToMany
+    public function user(): BelongsTo
     {
-        return $this->belongsToMany(
-            WalletModel::class,
-            'account_wallet',
-            'account_id',
-            'wallet_id'
-        );
+        return $this->belongsTo(UserModel::class, 'user_id');
     }
 
     public function cards(): HasMany

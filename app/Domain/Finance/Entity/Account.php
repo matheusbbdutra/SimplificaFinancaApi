@@ -2,16 +2,16 @@
 
 namespace App\Domain\Finance\Entity;
 
-use Illuminate\Support\Collection;
+use App\Domain\User\Entity\User;
 
 class Account
 {
     private ?int $id = null;
 
     public function __construct(
-        private string $name,
-        private string $description,
-        private Collection $wallets = new Collection(),
+        private string  $name,
+        private string  $description,
+        private User $user,
     ) {
     }
 
@@ -45,18 +45,13 @@ class Account
         $this->description = $description;
     }
 
-    public function addAccount($account): void
+    public function getUser(): User
     {
-        if (!$this->wallets->contains($account)) {
-            $this->wallets->push($account);;
-        }
+        return $this->user;
     }
 
-    public function removeAccount($account): void
+    public function setUser(User $user): void
     {
-        $index = $this->wallets->search($account);
-        if ($index !== false) {
-            $this->wallets->forget($index);
-        }
+        $this->user = $user;
     }
 }

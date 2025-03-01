@@ -2,11 +2,13 @@
 
 namespace App\Domain\Finance\Entity;
 
+use App\Domain\User\Entity\User;
+
 class Category
 {
     private ?int $id = null;
 
-    public function __construct(private string $name, private Account $account)
+    public function __construct(private string $name, private User $user)
     {
     }
 
@@ -20,14 +22,14 @@ class Category
         $this->id = $id;
     }
 
-    public function getAccount(): Account
+    public function getUser(): User
     {
-        return $this->account;
+        return $this->user;
     }
 
-    public function setAccount(Account $account): void
+    public function setUser(User $user): void
     {
-        $this->account = $account;
+        $this->user = $user;
     }
 
     public function getName(): string

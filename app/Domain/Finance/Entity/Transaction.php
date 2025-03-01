@@ -7,19 +7,19 @@ class Transaction
     private ?int $id = null;
 
     public function __construct(
-        private Account $account,
-        private string $description,
-        private float $amount,
+        private Account         $account,
+        private string          $description,
+        private float           $amount,
         private TransactionType $type,
-        private \DateTime $releaseDate,
-        private \DateTime $dueDate,
-        private Category $category,
-        private SubCategory $subCategory,
-        private ?Account $destinationAccount,
-        private ?string $recurrence,
-        private ?int $installment,
-        private ?int $installments,
-        private ?Card $card,
+        private \DateTime       $releaseDate,
+        private \DateTime       $dueDate,
+        private Category        $category,
+        private SubCategory     $subCategory,
+        private ?Account        $destinationAccount,
+        private ?string         $recurrence,
+        private ?int            $installment,
+        private ?int            $installments,
+        private ?Card           $card,
     )
     {
     }

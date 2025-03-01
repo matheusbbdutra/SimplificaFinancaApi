@@ -2,24 +2,31 @@
 
 namespace App\Domain\User\Entity;
 
+use App\Domain\Finance\Entity\Account;
+use App\Domain\User\ValueObject\EmailVO;
+use Illuminate\Support\Collection;
+
 class User
 {
+    private ?int $id = null;
+    private Collection $accounts;
+
     public function __construct(
         private string $name,
-        private string $email,
-        private string $password
+        private string $password,
+        private EmailVO $email,
     ) {
-        $this->password = $this->passwordHash($password);
+        $this->accounts = new Collection();
     }
 
-    public function verifyHash(string $senha): bool
+    public function getId(): ?int
     {
-        return password_verify($senha, $this->password);
+        return $this->id;
     }
 
-    private function passwordHash(string $senha): string
+    public function setId(?int $id): void
     {
-        return password_hash($senha, PASSWORD_DEFAULT);
+        $this->id = $id;
     }
 
     public function getName(): string
@@ -32,16 +39,6 @@ class User
         $this->name = $name;
     }
 
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): void
-    {
-        $this->email = $email;
-    }
-
     public function getPassword(): string
     {
         return $this->password;
@@ -50,5 +47,37 @@ class User
     public function setPassword(string $password): void
     {
         $this->password = $password;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email->toString();
+    }
+
+    public function setEmail(EmailVO $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function getAccounts(): Collection
+    {
+        return $this->accounts;
+    }
+
+    public function addAccount(Account $account): void
+    {
+        if (!$this->accounts->contains($account)) {
+            $this->accounts->push($account);
+            $account->setUser($this);
+        }
+    }
+
+    public function removeAccount(Account $account): void
+    {
+        $index = $this->accounts->search($account);
+        if ($index !== false) {
+            $this->accounts->forget($index);
+            $account->setUser(null);
+        }
     }
 }
