@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('account_number')->unique();
-            $table->decimal('balance', 10, 2)->default(0);
-            $table->string('type');
-            $table->boolean('active')->default(true);
+            $table->string('name');
+            $table->text('description');
+            $table->foreignId('user_id')->constrained();
+            $table->decimal('amount', 10, 2)->default(0);
             $table->timestamps();
         });
     }

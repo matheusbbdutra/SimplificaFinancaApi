@@ -12,6 +12,7 @@ class Account
         private string  $name,
         private string  $description,
         private User $user,
+        private float $amount = 0,
     ) {
     }
 
@@ -43,6 +44,16 @@ class Account
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    public function getAmount(): float
+    {
+        return $this->amount;
+    }
+
+    public function setAmount(float $amount): void
+    {
+        $this->amount = $amount;
     }
 
     public function getUser(): User
