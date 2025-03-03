@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Application\UseCases\Finance\Account;
+namespace App\Application\Finance\UseCases;
 
-use App\Application\DTO\Finance\Account\CreateAccountDTO;
+use App\Application\Finance\DTO\CreateAccountDTO;
+use App\Application\Finance\Mapper\AccountMapper;
 use App\Domain\Finance\Repository\AccountRepositoryInterface;
-use App\Domain\Finance\Service\Account\CreateAccountService;
 use App\Domain\User\Repository\UserRepositoryInterface;
 
 readonly class CreateAccountUseCase
 {
     public function __construct(
         private UserRepositoryInterface $userRepository,
-        private AccountRepositoryInterface $accountRepository,
-        private CreateAccountService $createAccountService
+        private AccountRepositoryInterface $accountRepository
     ) {
 
     }
@@ -25,7 +24,6 @@ readonly class CreateAccountUseCase
             throw new \Exception('User not found');
         }
 
-        $account = $this->createAccountService->execute($createAccountDTO, $user);
-        $this->accountRepository->save($account);
+        $this->accountRepository->save(AccountMapper::toEntity($createAccountDTO, $user));
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Finance\Mapper;
+namespace App\Application\Finance\Mapper;
 
-use App\Application\DTO\Finance\Account\CreateAccountDTO;
+use App\Application\Finance\DTO\CreateAccountDTO;
 use App\Domain\Finance\Entity\Account;
 use App\Domain\User\Entity\User;
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Api\User\Actions;
 
-use App\Application\UseCases\User\UpdateUserUseCase;
+use App\Application\User\UseCases\UpdateUserUseCase;
 use App\Http\Api\User\Requests\UpdateUserRequest;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -2,12 +2,12 @@
 
 namespace App\Domain\User\Service;
 
-use App\Application\DTO\User\UpdateUserDTO;
+use App\Application\User\DTO\UpdateUserDTO;
 use App\Domain\User\Entity\User;
 use App\Domain\User\ValueObject\EmailVO;
 use Illuminate\Support\Facades\Hash;
 
-class UpdateUserService
+class UserService
 {
     public function update(UpdateUserDTO $dto, ?User $user): User
     {
@@ -29,5 +29,10 @@ class UpdateUserService
         }
 
         return $user;
+    }
+
+    public function hashPassword(string $password): string
+    {
+        return Hash::make($password);
     }
 }
