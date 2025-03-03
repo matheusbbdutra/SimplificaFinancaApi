@@ -12,7 +12,7 @@ class AccountModel extends Model
 {
     protected $table = 'accounts';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'description', 'user_id'];
+    protected $fillable = ['name', 'description', 'user_id', 'amount'];
     public $timestamps = true;
 
     public function user(): BelongsTo

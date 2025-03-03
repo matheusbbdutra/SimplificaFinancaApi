@@ -6,7 +6,7 @@ use App\Application\UseCases\User\CreateUserUseCase;
 use App\Http\Api\User\Requests\CreateUserRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class CreateUserAction {
+readonly class CreateUserAction {
     public function __construct(private readonly CreateUserUseCase $createUserUseCase)
     {
     }

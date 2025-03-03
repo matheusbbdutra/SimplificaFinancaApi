@@ -10,11 +10,17 @@ class UserMapper
 {
     public static function toEntity(UserModel $model): User
     {
-         return new User(
+        $user = new User(
             name: $model->name,
             password: $model->password,
             email: new EmailVO($model->email)
         );
+
+        if ($model->id) {
+            $user->setId($model->id);
+        }
+
+        return $user;
     }
 
     public static function toModel(User $entity): UserModel
