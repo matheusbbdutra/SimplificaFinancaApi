@@ -2,7 +2,7 @@
 
 namespace App\Http\Api\User\Actions;
 
-use App\Application\UseCases\User\CreateUserUseCase;
+use App\Application\User\UseCases\CreateUserUseCase;
 use App\Http\Api\User\Requests\CreateUserRequest;
 use Symfony\Component\HttpFoundation\Response;
 

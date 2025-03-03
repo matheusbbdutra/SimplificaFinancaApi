@@ -2,7 +2,7 @@
 
 namespace App\Http\Api\User\Requests;
 
-use App\Application\DTO\User\UpdateUserDTO;
+use App\Application\User\DTO\UpdateUserDTO;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateUserRequest extends FormRequest

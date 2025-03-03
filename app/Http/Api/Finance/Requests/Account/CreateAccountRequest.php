@@ -2,7 +2,7 @@
 
 namespace App\Http\Api\Finance\Requests\Account;
 
-use App\Application\DTO\Finance\Account\CreateAccountDTO;
+use App\Application\Finance\DTO\CreateAccountDTO;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateAccountRequest extends FormRequest

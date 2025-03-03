@@ -2,7 +2,7 @@
 
 namespace App\Http\Api\Finance\Actions\Account;
 
-use App\Application\UseCases\Finance\Account\CreateAccountUseCase;
+use App\Application\Finance\UseCases\CreateAccountUseCase;
 use App\Http\Api\Finance\Requests\Account\CreateAccountRequest;
 use Symfony\Component\HttpFoundation\Response;
 

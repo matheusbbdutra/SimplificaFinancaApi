@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\DTO\Finance\Account;
+namespace App\Application\Finance\DTO;
 
 readonly class CreateAccountDTO
 {

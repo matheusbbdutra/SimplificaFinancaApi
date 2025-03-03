@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Domain\User\Mapper;
+namespace App\Application\User\Mapper;
 
-use App\Application\DTO\User\CreateUserDTO;
+use App\Application\User\DTO\CreateUserDTO;
 use App\Domain\User\Entity\User;
 use App\Domain\User\ValueObject\EmailVO;
 
 class UserMapper
 {
-    public static function createDtoToEntity(CreateUserDTO $dto, ?string $hashPassword): User
+    public static function createDtoToEntity(CreateUserDTO $dto, string $hashPassword): User
     {
         return new User(
             name: $dto->name,
-            password: $hashPassword ?? $dto->password,
+            password: $hashPassword,
             email: new EmailVO($dto->email),
         );
     }

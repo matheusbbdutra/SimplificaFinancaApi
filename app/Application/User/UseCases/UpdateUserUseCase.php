@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Application\UseCases\User;
+namespace App\Application\User\UseCases;
 
-use App\Application\DTO\User\UpdateUserDTO;
+use App\Application\User\DTO\UpdateUserDTO;
 use App\Domain\User\Repository\UserRepositoryInterface;
-use App\Domain\User\Service\UpdateUserService;
+use App\Domain\User\Service\UserService;
 
 readonly class UpdateUserUseCase
 {
     public function __construct(
-        public UpdateUserService $updateUserService,
+        public UserService $updateUserService,
         public UserRepositoryInterface $userRepository
     ) {
     }
@@ -20,5 +20,4 @@ readonly class UpdateUserUseCase
         $userUpdate = $this->updateUserService->update($dto, $user);
         $this->userRepository->update($userUpdate);
     }
-
 }
