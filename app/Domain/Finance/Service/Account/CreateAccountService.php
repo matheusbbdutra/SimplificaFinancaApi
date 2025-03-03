@@ -9,10 +9,8 @@ use App\Domain\User\Entity\User;
 
 readonly class CreateAccountService
 {
-
     public function execute(CreateAccountDTO $createAccountDTO, User $user): Account
     {
         return AccountMapper::toEntity($createAccountDTO, $user);
     }
-
 }
